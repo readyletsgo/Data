@@ -14,9 +14,9 @@ var s = function (p){
 	var history = [current];
 	var highlit = 0;
 
-var current = new Picture(0,0,0,"blue",1); // make the "current" picture, will do this with a random number & fill in data with api
-var goal = new Picture (0,0,60000,"gold", 2); // same as above but goal
-var old_current = new Picture(0,0,0,"blue",1); 
+var current = new Picture(0,0,0,"blue",1, "current"); // make the "current" picture, will do this with a random number & fill in data with api
+var goal = new Picture (0,0,60000,"gold", 2, "goal"); // same as above but goal
+var old_current = new Picture(0,0,0,"blue",1, "current"); 
 
 p.setup = function() {
 
@@ -40,12 +40,12 @@ p.setup = function() {
 		p.fill(255);
 		p.rect(spacing, height/2 - pic_height/2,pic_width,pic_height);
 		p.rect(width - spacing - pic_width, height/2 - pic_height/2,pic_width,pic_height);
-		p.fill(110);
-		p.rect(width/2 - small_pic_width/2, spacing, small_pic_width, small_pic_height);
-		p.rect(width/2 - small_pic_width/2, 2*spacing + small_pic_height, small_pic_width, small_pic_height);
-		p.rect(width/2 - small_pic_width/2, 3*spacing + 2*small_pic_height, small_pic_width, small_pic_height);
-		p.rect(width/2 - small_pic_width/2, 4*spacing + 3*small_pic_height, small_pic_width, small_pic_height);
-		p.rect(width/2 - small_pic_width/2, 5*spacing + 4*small_pic_height, small_pic_width, small_pic_height);
+		// p.fill(110);
+		// p.rect(width/2 - small_pic_width/2, spacing, small_pic_width, small_pic_height);
+		// p.rect(width/2 - small_pic_width/2, 2*spacing + small_pic_height, small_pic_width, small_pic_height);
+		// p.rect(width/2 - small_pic_width/2, 3*spacing + 2*small_pic_height, small_pic_width, small_pic_height);
+		// p.rect(width/2 - small_pic_width/2, 4*spacing + 3*small_pic_height, small_pic_width, small_pic_height);
+		// p.rect(width/2 - small_pic_width/2, 5*spacing + 4*small_pic_height, small_pic_width, small_pic_height);
 		p.fill("#6f7c85");
 		p.rect(0,0,pic_width+2*spacing, p.height/2-pic_height/2-2*spacing-50);
 		p.rect(0,p.height/2+pic_height/2+2*spacing+50,pic_width+2*spacing, p.height);
@@ -59,7 +59,7 @@ p.setup = function() {
 		p.textSize(25);
 		p.text("BACK", spacing+pic_width/2,p.height/2-pic_height/2-spacing-25);
 		p.text("RANDOM", spacing+pic_width/2,p.height/2+pic_height/2+spacing+25);
-		p.text("PRODUCT \n NAME", p.width-spacing- pic_width/2, spacing+pic_height/2 );
+		p.text(goal.name, p.width-spacing- pic_width/2, spacing+pic_height/2 );
 		p.textSize(15);
 		p.text("Short \n Product \n Description", p.width-spacing- pic_width/2, p.height - spacing - pic_height/2);
 
@@ -109,17 +109,32 @@ p.draw = function() {
 			var y = spacing + children[i].number*small_pic_height + children[i].number*spacing;
 
    			if(p.mouseX>x && p.mouseX< x+small_pic_width && p.mouseY > y && p.mouseY< y+small_pic_height){ //check if on picture & highlight
-      			p.fill(200,10);
-      			p.rect(x,y,small_pic_width,small_pic_height);
-      			p.push();
-      			p.textAlign(p.LEFT, p.CENTER);
-      			p.textSize(20);
-      			p.noStroke();
-      			p.fill(0);
-      			p.text("Product name here", x+small_pic_width+spacing, y+ small_pic_height/2);
-      			p.pop();
-      			highlit = children[i].number;
+      			if(highlit != children[i].number){
+      				p.fill(255,50);
+      				p.push();
+      				p.stroke(0);
+	      			p.rect(x,y,small_pic_width-1,small_pic_height-1);
+	      			p.pop();
+	      			p.fill("#6f7c85");
+	      			p.rect(x+small_pic_width+spacing, 0,pic_width,p.height);
+	      			p.push();
+	      			p.textAlign(p.LEFT, p.CENTER);
+	      			p.textSize(20);
+	      			p.noStroke();
+	      			p.fill(0);
+	      			p.text(children[i].name, x+small_pic_width+spacing, y+ small_pic_height/2);
+	      			p.pop();
+	      			highlit = children[i].number;
+	      		}
 
+    		}
+
+    		if(p.mouseX<x || p.mouseX>x+small_pic_width){
+    			console.log("this");
+    			p.fill("#6f7c85");
+	      		p.rect(x+small_pic_width+spacing, 0,pic_width,p.height);
+	      		p.rect(x-small_pic_width-spacing, 0,-pic_width/2,p.height);
+	      		highlit = 600;
     		}
 
     		else{ //redraw image once not hovering anymore
@@ -144,14 +159,14 @@ p.draw = function() {
 		p.background("#6f7c85");
 		if(space > 1100/history.length && vert_space>30){
 			for (var i = 0; i < history.length; i++) {
-				line(i*space, height/2+total*vert_space, (i+1)*space, height/2+(total+(history[i]-2))*vert_space);
+				p.line(i*space, height/2+total*vert_space, (i+1)*space, height/2+(total+(history[i]-2))*vert_space);
 				total += (history[i]-2);
 			}
 			num += 1;
 		}
 		else{
 			for (var i = 0; i < history.length; i++) {
-				line(i*1100/num, height/2+total*30, (i+1)*1100/num, height/2+(total+(history[i]-2))*30);
+				p.line(i*1100/num, height/2+total*30, (i+1)*1100/num, height/2+(total+(history[i]-2))*30);
 				total += (history[i]-2);
 				}
 			}
@@ -185,13 +200,14 @@ p.reset = function(new_thing){ // this is changing the "current" product to the 
 	p.setup();
 }
 
-function Picture(parent, number, id, picture, state){ // ID of parent, # in list (height), own ID, loaded image, (0 = child, 1 = current, 2 = goal)
+function Picture(parent, number, id, picture, state, name){ // ID of parent, # in list (height), own ID, loaded image, (0 = child, 1 = current, 2 = goal)
 
 	this.parent = parent; // keeps track of parent
 	this.number = number; // where it was on the list
 	this.id = id; // so I can find pictures of it or look it up if needed
 	this.picture = picture; // should be the loaded imagae
 	this.state = state; //as stated above
+	this.name = name;
 
 	this.render = function(x,y){ // draws the image where it should go 
 
@@ -222,10 +238,10 @@ function Picture(parent, number, id, picture, state){ // ID of parent, # in list
 			// this loop depends on how the API gives me data
 			// using fake id, real number, fake ID, fake image, real state
 			// kids[i] = new Picture(this.id, i, i+1, p.loadImage("https://github.com/zekelongmit/Data/blob/master/final/Not_this_one_100.png?raw=true"), 0);
-			kids[i] = new Picture(this.id, i, i+100, "red", 0);
+			kids[i] = new Picture(this.id, i, i+100, "red", 0, "thing");
 		}
 		var r = Math.floor(p.random(0,4));
-		kids[r] = new Picture(this.id, r, 42, "green",0);
+		kids[r] = new Picture(this.id, r, 42, "green",0, "other thing");
 		//kids[i] = new Picture(this.id, i, i+1, p.loadImage("https://github.com/zekelongmit/Data/blob/master/final/This_one_100.png?raw=true"), 0);
 		return kids; // should return the children of current so that I can use them in the code
 	}
