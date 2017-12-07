@@ -1,111 +1,145 @@
 <html>
 	<head>
 	    <title>Race through Walmart</title>
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
 	<!-- CSS STYLES GO HERE -->
     <style>
+
         a{
             margin: auto;
             text-align: center;
-            background-color: #7e8d98;
-            color: #000000; 
+            background-color: #1C75CF;
+            color: #ffffff; 
             display: block;
             width: 300px;
         }
-        a:hover{
-            color:white;
-            background-color: black;    
-        }
-	  body {
-                background-color: #6f7c85; 
-                font-size: 30px;
-                padding:0px;
-                margin:0px;
-            }
-        canvas {
-                padding: 15px;
-                margin: auto;
-                display: block;
-                width: 900px;
-            }
-            p{
-                margin: auto;
-                width: 900px;
-                font-size: 20px;
-                background-color: #6f7c85;
 
-            }
-            h2{
-                text-align: center;
-                width: 900px;
-                margin: auto;
-            }
-            h1{
-                text-align: center;
-                width: 900px;
-                margin: auto;
-                padding: 40px;
-            }
+        a:hover{
+            color: #041e42;
+            background-color: #fff200;    
+        }
+
+        .webfont-pt {
+            font-family: 'PT Sans', sans-serif;
+            font-size: 20px;
+        }
+
+        .webfont-pt_heading {
+            font-family: 'PT Sans', sans-serif;
+            font-size: 32px;
+        }
+
+        .webfont-pt_title {
+            font-family: 'PT Sans', sans-serif, bold;
+            font-size: 56px;
+        }
+        .webfont-pt_small {
+            font-family: 'PT Sans', sans-serif, bold;
+            font-size: 14px;
+        }
+
+	    body {
+            background-color: #1C75CF; 
+            font-size: 30px;
+            padding:0px;
+            margin:0px;
+        }
+
+        canvas {
+            margin: auto;
+            display: block;
+            width: 1200px;
+            padding-bottom: 20px;
+        }
+
+        p{
+            margin: auto;
+            width: 900px;
+            font-size: 20px;
+        }
+
+        h2{
+            text-align: right;
+            width: 900px;
+            color: #ffc220;
+            margin: auto;
+            font-size: 24px;
+        }
+
+        h1{
+            text-align: right;
+            width: 900px;
+            margin: auto;
+            color: white;
+            padding: 0px;
+            padding-top: 40px;
+        }
 
         #centered{
             margin: auto;
             width:450px;
-            background-color: yellow;
             height:300px;
             text-align: center;
             padding: 20px;
             font-size: 20px;
         }
+
         #centered img{
-            position:relative;
-            top:500px;
-            left:50px;
+            padding-top: 70px;
         }
+
         #bottomRight{
-            background-color: #7e8d98;
             margin: auto;
             width:450px;
             text-align: center;
-            padding: 20px;
-            padding-bottom: 30px;
-            font-size: 15px;
+            padding: 0px;
         }
-        #topLeftFixed{
-            position:auto;
-            bottom:0px;
-            left: 0px;
-            margin: auto;
-            width:1100px;
-            height:10px;
-            background-color: #330033;
-            padding-left: 20px;
+        #bottomRight_title{
+            margin-right: 50px;
+            text-align: right;
+            padding-top: 50px;
+        }
+        #bottomRight_title_yellow{
+            margin-right: 50px;
+            text-align: right;
             padding-bottom: 20px;
+            color: #ffc220;
         }
+
 	</style>
     <!-- JAVASCRIPT SCRIPTS GO HERE --> 
         <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
     <script language="javascript" src="libraries/p5.dom.js"></script>
-        <script language="javascript" type="text/javascript" src="second.js"></script> 
+        <script language="javascript" type="text/javascript" src="fourth.js"></script> 
 
 	</head>
     <!-- THIS IS WHERE HTML BODY STARTS -->
 	<body>
 
-    <h1>A RACE THROUGH WALMART</h1> <br>
-    <h2>This page explores the relationship between products sold and advirtised at Walmart. </h2><br>
-    <p>
+    <h1 class="webfont-pt_title">A Race Through Walmart</h1>
+    <h2 class="webfont-pt_heading">This page explores the relationship between products sold and advirtised at Walmart. </h2><br>
+    <p class="webfont-pt">
          &nbsp  &nbsp  Using a Walmart product recommendation API we are able to see what Walmart suggests for different products and through this we can see their algorithm at work. This reminded me of a game called the wiki game I used to play at school when I was bored. You would go to wikipedia on two different tabs and hit the "random" button. Then you would try to get from the first page to the second page only through clicking links. This is a similar game. You are given a random starting product and a random goal product and it is your goal to race through the product recommendations and find the goal product. 
     </p>
+
+        <br>
+        <div id="centered">
+            <img src="https://www.greenbiz.com/sites/default/files/styles/gbz_article_primary_breakpoints_kalapicture_screen-lg_2x/public/images/articles/featured/walmart-950x578_0.jpg?itok=b90WfqQc" width="237" height="144">
+        </div>
 
         <br>
 
 
         <div id="thing"></div>
-        <a href="test_line.html">END GAME</a> 
+        <a href="test_line.html" class="webfont-pt_heading">END GAME</a> 
+        
         <br>
+        <div id="centered">
+            <img src="https://www.greenbiz.com/sites/default/files/styles/gbz_article_primary_breakpoints_kalapicture_screen-lg_2x/public/images/articles/featured/walmart-950x578_0.jpg?itok=b90WfqQc" width="237" height="144">
+        </div>
 
-        <div id="bottomRight">
-            Made by: Zeke Long<br>
-            4.032 Data Visualization<br>
+        <div id="bottomRight" class="webfont-pt_small">
+            
             <br>
             Links to more resources: <br>
             <a href="http://fortune.com/2012/07/30/amazons-recommendation-secret/">Fortune article about Amazon</a>
@@ -113,5 +147,16 @@
             <a href="https://www.practicalecommerce.com/10-Questions-on-Product-Recommendations">10 Questions about Product Recommendation</a>
         </div>
         <br>
+
+        <div id="bottomRight_title" class="webfont-pt_small">
+            4.032 Data Visualization<br>
+            
+        </div>
+
+        <div id="bottomRight_title_yellow" class="webfont-pt_small">
+            Zeke Long<br>
+        </div>
+
+        
 	</body>
 </html>
