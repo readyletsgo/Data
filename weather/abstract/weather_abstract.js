@@ -93,7 +93,7 @@ function got_past_data(data) {
 	translate(width/2,0);
 	queryResult = data;
 	var day = queryResult.daily.data[0];
-	textSize(12);
+	textSize(14);
 	textAlign(RIGHT);
 	var clothes = comfortable(day.apparentTemperatureMax,day.humidity,day.precipProbability,day.cloudCover);
 	fill(225);
@@ -356,7 +356,7 @@ function thing(h,t,l,s, day, current) {
   noStroke();
   ellipse(0,0,640*(day.apparentTemperatureHigh/100),640*(day.apparentTemperatureHigh/100));
   fill(color(back));
-	textSize(54);
+	textSize(48);
 	textAlign(LEFT);
 	stroke(0);
 	strokeWeight(2);
