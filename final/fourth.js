@@ -89,9 +89,8 @@ function setup() {
 		rect(spacing+3*pic_width, spacing, 180,180);
 		fill(color(market_green));
 		rect(spacing+3*pic_width+10, spacing+10, 160,160);
-		text(past.length, width/2, spacing + pic_height/2);
-		loadImage("https://ec-us-i5.wal.co/asr/6d088fee-c283-492a-9a6e-832b148be4ec_1.d69492c20b046d74b0ad24ee729a85a5.jpeg?odnWidth=180&odnHeight=180&odnBg=ffffff", function(img) {image(img, spacing+pic_width, spacing)});
-    		loadImage("https://ec-us-i5.wal.co/asr/ce4fc094-a0f3-4c5a-bf61-45ab1e460423_1.8f12ad68fc3ab012d5032aaac353921b.jpeg?odnWidth=180&odnHeight=180&odnBg=ffffff", function(img_2) {image(img_2, spacing+3*pic_width, spacing)});
+		//loadImage("https://ec-us-i5.wal.co/asr/6d088fee-c283-492a-9a6e-832b148be4ec_1.d69492c20b046d74b0ad24ee729a85a5.jpeg?odnWidth=180&odnHeight=180&odnBg=ffffff", function(img) {image(img, spacing+pic_width, spacing)});
+    		//loadImage("https://ec-us-i5.wal.co/asr/ce4fc094-a0f3-4c5a-bf61-45ab1e460423_1.8f12ad68fc3ab012d5032aaac353921b.jpeg?odnWidth=180&odnHeight=180&odnBg=ffffff", function(img_2) {image(img_2, spacing+3*pic_width, spacing)});
 
 		
 
