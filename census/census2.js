@@ -2123,12 +2123,12 @@ var background_color = "#69626D";
 // textFont("Georgia");
 
 function setup() {
-	createCanvas(700, 700);
+	createCanvas(1000, 1000);
 	background(color(background_color));
 	pop_circles();
 	total = 0;
-	middle_x = 350;
-	middle_y = 350;
+	middle_x = 500;
+	middle_y = 500;
 	textAlign(CENTER, CENTER);
 	rectMode(CENTER);
 }
