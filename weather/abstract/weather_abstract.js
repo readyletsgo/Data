@@ -93,7 +93,7 @@ function got_past_data(data) {
 	translate(width/2,0);
 	queryResult = data;
 	var day = queryResult.daily.data[0];
-	textSize(14);
+	textSize(12);
 	textAlign(RIGHT);
 	var clothes = comfortable(day.apparentTemperatureMax,day.humidity,day.precipProbability,day.cloudCover);
 	fill(225);
