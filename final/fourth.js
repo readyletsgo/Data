@@ -318,6 +318,7 @@ function draw_line() {
 
 	stroke(color("#000000"));
   	fill(0);
+	strokeWeight(3);
 	line(2.5*spacing + pic_width/2 + 1.5*small_pic_width, 3*spacing + pic_height, 2*spacing + pic_width/2 + 1.5*small_pic_width, height- 2*spacing);
 	line(2.5*spacing + pic_width/2 + 1.5*small_pic_width, halfway_down,width - spacing - pic_width/2,halfway_down);
 	ellipse(4*spacing + pic_width/2 + 1.5*small_pic_width, halfway_down, 10,10);
