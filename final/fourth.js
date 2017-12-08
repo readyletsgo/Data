@@ -9,6 +9,9 @@ var boxes = [];
 var headers = [];
 var active_box;
 var past = new Array();
+var new_ele = 0;
+var current = new Box(66, 7, clearance_yellow);
+var goal = new Box(42, 42, walmart_blue);
 var new_display = 1;
 var clicked_already = 0;
 var vert_scale = 3;
@@ -77,10 +80,16 @@ function setup() {
 		text("FROM", spacing, spacing,180,180);
 		text("TO", spacing + 2*pic_width, spacing, 180, 180);
 		text("IN " + past.length + " MOVES!", spacing+4*pic_width, spacing, 360, 180);
-		fill(color(clearance_yellow));
-		rect(spacing+pic_width, spacing, 180,180);
-		fill(color(market_green));
-		rect(spacing+3*pic_width, spacing, 180,180);
+		loadImage("https://ec-us-i5.wal.co/asr/6d088fee-c283-492a-9a6e-832b148be4ec_1.d69492c20b046d74b0ad24ee729a85a5.jpeg?odnWidth=180&odnHeight=180&odnBg=ffffff", function(img) {image(img, spacing+pic_width, spacing)});
+    	loadImage("https://ec-us-i5.wal.co/asr/ce4fc094-a0f3-4c5a-bf61-45ab1e460423_1.8f12ad68fc3ab012d5032aaac353921b.jpeg?odnWidth=180&odnHeight=180&odnBg=ffffff", function(img_2) {image(img_2, spacing+3*pic_width, spacing)});
+		// fill(255);
+		// rect(spacing+pic_width, spacing, 180,180);
+		// fill(color(clearance_yellow));
+		// rect(spacing+pic_width+10, spacing+10, 160,160);
+		// fill(255);
+		// rect(spacing+3*pic_width, spacing, 180,180);
+		// fill(color(market_green));
+		// rect(spacing+3*pic_width+10, spacing+10, 160,160);
 		text(past.length, width/2, spacing + pic_height/2);
 
 		
@@ -90,6 +99,13 @@ function setup() {
 		total = 0;
 		strokeWeight(3);
 		line(100,halfway_down, 1100, halfway_down);
+		stroke(0);
+		strokeWeight(.25);
+
+		for (var i = 0; i < (2*vert_scale)-1; i++) {
+			line(100, halfway_down - (vert_scale-1)*260/(vert_scale) + i*260/vert_scale, 1100, halfway_down - (vert_scale-1)*260/(vert_scale) + i*260/vert_scale);
+		}
+		
 		strokeWeight(1);
 
 
@@ -243,7 +259,7 @@ function big_ones(name, type, id){
 		push();
 		if (type == 0){
 			fill(color(clearance_yellow));
-			rect(spacing, spacing, 180, 180);
+			rect(spacing+10, spacing+10, 160, 160);
 			noStroke();
 			textSize(32);
 			fill(color("white"));
@@ -283,12 +299,14 @@ function draw_line() {
 	var final_x = width - spacing - pic_width/2;
 
 	stroke(0);
+	strokeWeight(.25);
 
 	for (var i = 0; i < (2*vert_scale)-1; i++) {
-		line(initial_x, halfway_down - (vert_scale*2)*260 + i*vert_scale*260, final_x, halfway_down - (vert_scale*2)*260 + i*vert_scale*260);
+		line(initial_x, halfway_down - (vert_scale-1)*260/(vert_scale) + i*260/vert_scale, final_x, halfway_down - (vert_scale-1)*260/(vert_scale) + i*260/vert_scale);
 	}
 
 	stroke(color("#000000"));
+	strokeWeight(1);
 
 	for (var i = 0; i < past.length; i++) {
 			line((initial_x) + i*820/past.length, halfway_down + total*260/vert_scale, (initial_x) + (i+1)*820/past.length, halfway_down + (total+((past[i]-2)))*260/vert_scale);	
