@@ -89,8 +89,8 @@ function setup() {
 		rect(spacing+3*pic_width, spacing, 180,180);
 		fill(color(market_green));
 		rect(spacing+3*pic_width+10, spacing+10, 160,160);
-		loadImage("goal.png", function(img) {image(img, spacing+pic_width, spacing)});
-    		loadImage("start.png", function(img_2) {image(img_2, spacing+3*pic_width, spacing)});
+		loadImage("start.png", function(img) {image(img, spacing+pic_width, spacing)});
+    		loadImage("goal.png", function(img_2) {image(img_2, spacing+3*pic_width, spacing)});
 
 		
 
@@ -264,16 +264,15 @@ function big_ones(name, type, id){
 			textSize(32);
 			fill(color("white"));
 			textAlign(LEFT, CENTER);
-			text(name, 2*spacing + pic_width, spacing , 180, 180);
+			text(this.name, 2*spacing + pic_width, spacing , 180, 180);
 		}
 		if (type == 1) {
-			fill(color(market_green));
-			rect(width - spacing - pic_width, spacing, 180, 180);
+			loadImage("goal.png", function(img_3) {image(img_3, width - spacing - pic_width, spacing)});
 			textAlign(RIGHT, CENTER);
 			noStroke();
 			textSize(32);
 			fill(color("white"));
-			text(name, width - 2*spacing - 2*pic_width, spacing , 180, 180);
+			text("Axe Shampoo", width - 2*spacing - 2*pic_width, spacing , 180, 180);
 		}
 		new_display = 0;
 		pop();
